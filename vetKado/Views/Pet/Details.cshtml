@@ -1,0 +1,50 @@
+﻿@model vetKado.Entity.Pet
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h3>@Model.Name</h3>
+    <p><strong>Tür:</strong> @Model.Species</p>
+    <p><strong>Irk:</strong> @Model.Breed</p>
+    <p><strong>Yaş:</strong> @Model.Age</p>
+</div>
+
+<div>
+    <h3>Sahip Bilgileri</h3>
+    <p><strong>Ad:</strong> @Model.Owner.Name</p>
+    <p><strong>Soyad:</strong> @Model.Owner.Phone</p>
+    <p><strong>Adres:</strong> @Model.Owner.Address</p>
+</div>
+
+<div>
+    <h3>Tedaviler</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tarih</th>
+                    <th>Tedavi Tipi</th>
+                    <th>Tedavi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var treatment in Model.Treatments)
+                {
+                    <tr>
+                        <td>@treatment.Date.ToShortDateString()</td>
+                        <td>@treatment.Type</td>
+                        <td>@treatment.Medicine</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+
