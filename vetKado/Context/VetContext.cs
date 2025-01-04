@@ -12,5 +12,6 @@ namespace vetKado.Context
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Treatment> Treatments { get; set; }
+        public DbSet<Vaccine> Vaccines { get; set; }
     }
 }

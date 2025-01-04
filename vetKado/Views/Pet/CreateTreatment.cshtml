@@ -1,0 +1,25 @@
+﻿@model vetKado.Entity.Treatment
+
+<h2>Tedavi Oluştur</h2>
+
+<div>
+    <p>Seçilen Hayvan: <strong>@ViewBag.PetName</strong></p>
+</div>
+
+<form asp-action="CreateTreatment" method="post">
+    <input type="hidden" name="PetId" value="@ViewBag.PetId" />
+
+    <div class="form-group">
+        <label for="Type">Tedavi Türü</label>
+        <input asp-for="Type" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Medicine">İlaç</label>
+        <input asp-for="Medicine" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Date">Tarih</label>
+        <input asp-for="Date" class="form-control" type="date" />
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>

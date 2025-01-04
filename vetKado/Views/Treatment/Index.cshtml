@@ -1,0 +1,36 @@
+﻿@model IEnumerable<vetKado.Entity.Treatment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tarih</th>
+            <th>Tip</th>
+            <th>Tedavi</th>
+            <th>Hayvan</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Date</td>
+                <td>@item.Type</td>
+                <td>@item.Medicine</td>
+                <td>@item.Pet?.Name</td> <!-- Sahibi için bir isim örneği -->
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TreatmentId">Düzenle</a> |
+                    <a asp-action="Details" asp-route-id="@item.TreatmentId">Detay</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TreatmentId">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

@@ -46,5 +46,32 @@
 
 </div>
 
+<div>
+    <h3>Aşılar</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tarih</th>
+                <th>Aşı Adı</th>
+                <th>Açıklama</th>
+                <th>Bir Sonraki Aşı</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vaccine in Model.Vaccines)
+            {
+                <tr>
+                    <td>@vaccine.VaccineDate.ToShortDateString()</td>
+                    <td>@vaccine.VaccineName</td>
+                    <td>@vaccine.VaccineDescription</td>
+                    <td>@vaccine.VaccineTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
 <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vetKado.Context;
 
@@ -11,9 +12,11 @@ using vetKado.Context;
 namespace vetKado.Migrations
 {
     [DbContext(typeof(VetContext))]
-    partial class VetContextModelSnapshot : ModelSnapshot
+    [Migration("20250101141451_testi")]
+    partial class testi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,38 +112,6 @@ namespace vetKado.Migrations
                     b.ToTable("Treatments");
                 });
 
-            modelBuilder.Entity("vetKado.Entity.Vaccine", b =>
-                {
-                    b.Property<int>("VaccineId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VaccineId"));
-
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("VaccineDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("VaccineDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VaccineName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("VaccineTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("VaccineId");
-
-                    b.HasIndex("PetId");
-
-                    b.ToTable("Vaccines");
-                });
-
             modelBuilder.Entity("vetKado.Entity.Pet", b =>
                 {
                     b.HasOne("vetKado.Entity.Owner", "Owner")
@@ -163,17 +134,6 @@ namespace vetKado.Migrations
                     b.Navigation("Pet");
                 });
 
-            modelBuilder.Entity("vetKado.Entity.Vaccine", b =>
-                {
-                    b.HasOne("vetKado.Entity.Pet", "Pet")
-                        .WithMany("Vaccines")
-                        .HasForeignKey("PetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pet");
-                });
-
             modelBuilder.Entity("vetKado.Entity.Owner", b =>
                 {
                     b.Navigation("Pets");
@@ -182,8 +142,6 @@ namespace vetKado.Migrations
             modelBuilder.Entity("vetKado.Entity.Pet", b =>
                 {
                     b.Navigation("Treatments");
-
-                    b.Navigation("Vaccines");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,33 @@
+﻿@model vetKado.Entity.Vaccine
+@{
+    ViewData["Title"] = "CreateVaccine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <p>Seçilen Hayvan: <strong>@ViewBag.PetName</strong></p>
+</div>
+
+<form asp-action="CreateVaccine" method="post">
+    <input type="hidden" name="PetId" value="@ViewBag.PetId" />
+
+    <div class="form-group">
+        <label for="VaccineName">Aşı Adı</label>
+        <input asp-for="VaccineName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="VaccineDescription">Açıklama</label>
+        <input asp-for="VaccineDescription" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="VaccineDate">Tarih</label>
+        <input asp-for="VaccineDate" class="form-control" type="date" />
+    </div>
+    <div class="form-group">
+        <label for="VaccineTime">Sonraki Aşı Tarihi</label>
+        <input asp-for="VaccineTime" class="form-control" type="date" />
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>
+

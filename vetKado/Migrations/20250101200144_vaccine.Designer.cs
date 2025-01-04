@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using vetKado.Context;
 
@@ -11,9 +12,11 @@ using vetKado.Context;
 namespace vetKado.Migrations
 {
     [DbContext(typeof(VetContext))]
-    partial class VetContextModelSnapshot : ModelSnapshot
+    [Migration("20250101200144_vaccine")]
+    partial class vaccine
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,14 +134,14 @@ namespace vetKado.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("VaccineTime")
+                    b.Property<DateTime>("VaccineTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("VaccineId");
 
                     b.HasIndex("PetId");
 
-                    b.ToTable("Vaccines");
+                    b.ToTable("Vaccine");
                 });
 
             modelBuilder.Entity("vetKado.Entity.Pet", b =>

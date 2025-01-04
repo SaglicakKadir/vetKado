@@ -10,5 +10,6 @@
         public int OwnerId { get; set; }
         public Owner Owner { get; set; }
         public List<Treatment> Treatments { get; set; }
+        public List<Vaccine> Vaccines { get; set;}
     }
 }

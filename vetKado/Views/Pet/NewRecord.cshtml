@@ -1,0 +1,47 @@
+﻿@model vetKado.Models.PetOwnerViewModel
+
+@{
+    ViewData["Title"] = "NewRecord";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Hayvan Bilgileri</h4>
+    <div class="form-group">
+        <label for="PetName">Hayvan Adı</label>
+        @Html.TextBoxFor(m => m.Pet.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Species">Tür</label>
+        @Html.TextBoxFor(m => m.Pet.Species, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Breed">Cins</label>
+        @Html.TextBoxFor(m => m.Pet.Breed, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Age">Yaş</label>
+        @Html.TextBoxFor(m => m.Pet.Age, new { @class = "form-control", type = "number" })
+    </div>
+
+    <h4>Sahip Bilgileri</h4>
+    <div class="form-group">
+        <label for="OwnerName">Sahip Adı</label>
+        @Html.TextBoxFor(m => m.Owner.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Phone">Telefon</label>
+        @Html.TextBoxFor(m => m.Owner.Phone, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Address">Adres</label>
+        @Html.TextBoxFor(m => m.Owner.Address, new { @class = "form-control" })
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+}
